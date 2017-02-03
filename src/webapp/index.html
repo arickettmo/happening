@@ -1,0 +1,121 @@
+   <head>
+<!-- Plotly.js -->
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        </head>
+        <body>
+        <!-- Plotly chart will be drawn inside this DIV -->
+        <div id="myDiv"></div>
+        <script>
+
+            
+                       Plotly.d3.csv('http://localhost/Countries.csv', function(err, rows){
+      function unpack(rows, key) {
+          return rows.map(function(row) { 
+                    return row[key]; });
+      } 
+                                               
+                           
+        var cityName = unpack(rows, 'capital'),
+        cityPop = unpack(rows, 'volume'),
+        cityLat = unpack(rows, 'lat'),
+        cityLon = unpack(rows, 'lon'),
+        color = [,"rgb(255,65,54)","rgb(133,20,75)","rgb(255,133,27)","lightgrey"],
+        citySize = [],
+        hoverText = [],
+        scale = 1;
+
+    for ( var i = 0 ; i < cityPop.length; i++) {
+        var currentSize = cityPop[i] / scale;
+        var currentText = cityName[i] + " pop: " + cityPop[i];
+        citySize.push(currentSize);
+        hoverText.push(currentText);
+    }
+                        
+  
+    var data = [{
+        type: 'scattergeo',
+        lat: cityLat,
+        lon: cityLon,
+        hoverinfo: 'text',
+        text: hoverText,
+        marker: {
+            size: citySize,
+            line: {
+                color: 'black',
+                width: 5
+            },
+        }
+        }];
+
+
+    var layout = {
+        title: 'Capitals',
+        width: 1250,
+        height: 1250,
+        geo: {
+            projection: {
+                type: 'robinson'
+            },
+            showland: true,
+            subunitwidth: 1,
+            countrywidth: 1,
+            landcolor: 'rgb(229, 229, 229)',
+        }
+        };
+
+        Plotly.plot(myDiv, data, layout, {showLink: false});
+                       });
+
+            
+//            Plotly.d3.csv('http://localhost/Countries.csv', function(err, rows){
+//      function unpack(rows, key) {
+//          return rows.map(function(row) { 
+//                    return row[key]; });
+//      } 
+//                        
+//  
+// var data = [{
+//              type: 'choropleth',
+//              locations: unpack(rows, 'code'),
+//              z: unpack(rows, 'volume'),
+//              zmin: 0,
+//              zmax: 1,
+//              colorscale: [
+//                [0, 'rgb(242,240,247)'], [0.2, 'rgb(218,218,235)'],
+//                [0.4, 'rgb(188,189,220)'], [0.6, 'rgb(158,154,200)'],
+//                [0.8, 'rgb(117,107,177)'], [1, 'rgb(84,39,143)']
+//              ],
+//            marker: {
+//              line:{
+//                color: 'rgb(255,255,255)',
+//                width: 1
+//              }
+//            },
+//            showscale: false
+//          }];
+//
+//  var layout = {
+//          title: 'Trending countries',
+//          width: 1000,
+//          height: 1000,
+//      margin: {
+//        b: 80,
+//        l: 80,
+//        r: 80,
+//        t: 80,
+//        autoexpand: false
+//      },
+//          geo:{
+//            projection: {
+//               type: "kavrayskiy7"
+//            },
+//            showlakes: true,
+//            lakecolor: 'rgb(255,255,255)'
+//          }
+//      };
+//      Plotly.plot(myDiv, data, layout, {showLink: false});
+//  });
+            
+            
+        </script>
+        </body>
