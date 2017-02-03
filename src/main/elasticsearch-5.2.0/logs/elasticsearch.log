@@ -32,3 +32,5 @@
 [2017-02-03T21:40:10,128][INFO ][o.e.c.m.MetaDataCreateIndexService] [tAM3r56] [logstash-2017.02.03] creating index, cause [auto(bulk api)], templates [logstash], shards [5]/[1], mappings [_default_]
 [2017-02-03T21:40:10,228][INFO ][o.e.c.m.MetaDataMappingService] [tAM3r56] [logstash-2017.02.03/95Fkr15rSfSQ0sUhvkBJ1w] create_mapping [tweet]
 [2017-02-03T21:41:15,551][INFO ][o.e.c.m.MetaDataMappingService] [tAM3r56] [logstash-2017.02.03/95Fkr15rSfSQ0sUhvkBJ1w] update_mapping [tweet]
+[2017-02-03T21:46:41,273][INFO ][o.e.c.m.MetaDataMappingService] [tAM3r56] [logstash-2017.02.03/95Fkr15rSfSQ0sUhvkBJ1w] update_mapping [tweet]
+[2017-02-03T21:52:01,097][INFO ][o.e.c.m.MetaDataMappingService] [tAM3r56] [logstash-2017.02.03/95Fkr15rSfSQ0sUhvkBJ1w] update_mapping [tweet]
