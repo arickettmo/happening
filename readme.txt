@@ -3,3 +3,6 @@
 brew update
 brew install elasticsearch
 brew install logstash
+
+2) Connect to AWS: 
+ssh -i ~/.ssh/{name} ubuntu@{Public DNS}
