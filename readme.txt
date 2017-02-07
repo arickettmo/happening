@@ -55,3 +55,5 @@ sudo lsof -i -n -P
 9) Logstash configuration file is stored in:
 
 /etc/logstash/conf.d/
+
+10) If the operating system does not let you create the file in the configuration folder of logstash then just execute script.sh and the file output twitter.logstash move it to /etc/logstash/conf.d/. Then restart logstash.
