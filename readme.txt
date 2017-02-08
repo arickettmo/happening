@@ -57,3 +57,10 @@ sudo lsof -i -n -P
 /etc/logstash/conf.d/
 
 10) If the operating system does not let you create the file in the configuration folder of logstash then just execute script.sh and the file output twitter.logstash move it to /etc/logstash/conf.d/. Then restart logstash.
+
+11) Install curator: 
+
+sudo apt-get update && sudo apt-get install elasticsearch-curator
+
+For more details around installing curator:
+https://www.elastic.co/guide/en/elasticsearch/client/curator/current/apt-repository.html
