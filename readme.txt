@@ -60,6 +60,8 @@ sudo lsof -i -n -P
 
 11) Install curator: 
 
+echo "deb http://packages.elastic.co/curator/4/debian stable main" | sudo tee -a /etc/apt/sources.list.d/curator.list
+
 sudo apt-get update && sudo apt-get install elasticsearch-curator
 
 For more details around installing curator:
