@@ -66,3 +66,5 @@ sudo apt-get update && sudo apt-get install elasticsearch-curator
 
 For more details around installing curator:
 https://www.elastic.co/guide/en/elasticsearch/client/curator/current/apt-repository.html
+
+12) Create a shell script that runs the command of curator and leave it in the crontab daily folder (sudo mv src/main/elastic_curator.sh /etc/cron.daily/) which involves that command automatically executing it daily.
