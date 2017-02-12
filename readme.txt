@@ -67,4 +67,7 @@ sudo apt-get update && sudo apt-get install elasticsearch-curator
 For more details around installing curator:
 https://www.elastic.co/guide/en/elasticsearch/client/curator/current/apt-repository.html
 
-12) Create a shell script that runs the command of curator and copy it in the crontab daily folder (sudo mv src/main/elastic_curator.sh /etc/cron.daily/) which involves that command automatically executing it daily.
+12) Add command in the crontab of the server to run on a daiy basis the process that deletes indices older than one day:
+
+crontab -e
+1 0 * * * export LC_ALL=en_US.utf8 && curator --config /home/ubuntu/happening/src/main/CONFIGURATION_FILE.yml /home/ubuntu/happening/src/main/ACTION_FILE.yml
