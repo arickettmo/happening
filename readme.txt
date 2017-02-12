@@ -71,3 +71,6 @@ https://www.elastic.co/guide/en/elasticsearch/client/curator/current/apt-reposit
 
 crontab -e
 1 0 * * * export LC_ALL=en_US.utf8 && curator --config /home/ubuntu/happening/src/main/CONFIGURATION_FILE.yml /home/ubuntu/happening/src/main/ACTION_FILE.yml
+
+13) Execute country volume aggregation in elasticsearch once every hour
+1 * * * * python /home/ubuntu/happening/src/main/aggregate_per_country.py
