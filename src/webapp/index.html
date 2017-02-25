@@ -1,15 +1,42 @@
-   <head>
+  <head>
 <!-- Plotly.js -->
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         </head>
         <body>
         <!-- Plotly chart will be drawn inside this DIV -->
-        <div id="myDiv"></div>
+        <div id="myDiv">
+	    <table id="scores">
+	      <tr>
+		<th>Country</th>
+		<th>Code</th>
+		<th>Volume</th>
+		<th>Mean</th>
+		<th>Stdev</th>
+		<th>Score</th>	  
+              </tr>
+	     </table>
+	</div>
         <script>
 
-         
-        $.getJSON('localhost/trending_places.py', function(data){
-            console.log(data);
+       
+        $.getJSON('/cgi/trending_places.py', function(data){
+            
+	    // sort by value
+		data.sort(function (a, b) {
+  			return b.score - a.score;
+		});
+
+	    console.log(data);
+	    
+	  
+
+	    for (var i = 0; i < data.length; i++) {
+    		$( "#scores" ).append( "<tr><td>"+data[i].country+"</td><td>"+data[i].code+"</td><td>"+data[i].volume+"</td><td>"+data[i].mean+"</td><td>"+data[i].stdev+"</td><td>"+data[i].score+"</td></tr>");
+   		//Do something
+	    }
+
         });    
             
             

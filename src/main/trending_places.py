@@ -91,7 +91,7 @@ if __name__ == "__main__":
             score = 0
         else:
             score = (response["responses"][pointer]["hits"]["hits"][0]["_source"]["volume"]-statistics.mean(values))/statistics.stdev(values)
-	data.append({"country": place["country"], "code": place["code"], "mean": statistics.mean(values), "stdev": statistics.stdev(values), "score": score})
+	data.append({"country": place["country"], "code": place["code"], "volume": response["responses"][pointer]["hits"]["hits"][0]["_source"]["volume"],  "mean": round(statistics.mean(values),2), "stdev": round(statistics.stdev(values),2), "score": round(score,2)})
         pointer+=11
 
     print "Content-type: text/html\n\n";
