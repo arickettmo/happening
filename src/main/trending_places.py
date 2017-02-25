@@ -94,9 +94,8 @@ if __name__ == "__main__":
 	data.append({"country": place["country"], "code": place["code"], "mean": statistics.mean(values), "stdev": statistics.stdev(values), "score": score})
         pointer+=11
 
-    pprint(data)   
-#    print "Content-type: text/html\n\n";
-#    print json.dumps(data)   
+    print "Content-type: text/html\n\n";
+    print json.dumps(data)   
     
     
     

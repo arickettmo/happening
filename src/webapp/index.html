@@ -7,64 +7,73 @@
         <div id="myDiv"></div>
         <script>
 
+         
+        $.getJSON('localhost/trending_places.py', function(data){
+            console.log(data);
+        });    
             
-                       Plotly.d3.csv('http://localhost/Countries.csv', function(err, rows){
-      function unpack(rows, key) {
-          return rows.map(function(row) { 
-                    return row[key]; });
-      } 
-                                               
-                           
-        var cityName = unpack(rows, 'capital'),
-        cityPop = unpack(rows, 'volume'),
-        cityLat = unpack(rows, 'lat'),
-        cityLon = unpack(rows, 'lon'),
-        color = [,"rgb(255,65,54)","rgb(133,20,75)","rgb(255,133,27)","lightgrey"],
-        citySize = [],
-        hoverText = [],
-        scale = 1;
+            
 
-    for ( var i = 0 ; i < cityPop.length; i++) {
-        var currentSize = cityPop[i] / scale;
-        var currentText = cityName[i] + " pop: " + cityPop[i];
-        citySize.push(currentSize);
-        hoverText.push(currentText);
-    }
-                        
-  
-    var data = [{
-        type: 'scattergeo',
-        lat: cityLat,
-        lon: cityLon,
-        hoverinfo: 'text',
-        text: hoverText,
-        marker: {
-            size: citySize,
-            line: {
-                color: 'black',
-                width: 5
-            },
-        }
-        }];
-
-
-    var layout = {
-        title: 'Capitals',
-        width: 1250,
-        height: 1250,
-        geo: {
-            projection: {
-                type: 'robinson'
-            },
-            showland: true,
-            subunitwidth: 1,
-            countrywidth: 1,
-            landcolor: 'rgb(229, 229, 229)',
-        }
-        };
-
-        Plotly.plot(myDiv, data, layout, {showLink: false});
-                       });
+            
+            
+            
+//                       Plotly.d3.csv('http://localhost/Countries.csv', function(err, rows){
+//      function unpack(rows, key) {
+//          return rows.map(function(row) { 
+//                    return row[key]; });
+//      } 
+//                                               
+//                           
+//        var cityName = unpack(rows, 'capital'),
+//        cityPop = unpack(rows, 'volume'),
+//        cityLat = unpack(rows, 'lat'),
+//        cityLon = unpack(rows, 'lon'),
+//        color = [,"rgb(255,65,54)","rgb(133,20,75)","rgb(255,133,27)","lightgrey"],
+//        citySize = [],
+//        hoverText = [],
+//        scale = 1;
+//
+//    for ( var i = 0 ; i < cityPop.length; i++) {
+//        var currentSize = cityPop[i] / scale;
+//        var currentText = cityName[i] + " pop: " + cityPop[i];
+//        citySize.push(currentSize);
+//        hoverText.push(currentText);
+//    }
+//                        
+//  
+//    var data = [{
+//        type: 'scattergeo',
+//        lat: cityLat,
+//        lon: cityLon,
+//        hoverinfo: 'text',
+//        text: hoverText,
+//        marker: {
+//            size: citySize,
+//            line: {
+//                color: 'black',
+//                width: 5
+//            },
+//        }
+//        }];
+//
+//
+//    var layout = {
+//        title: 'Capitals',
+//        width: 1250,
+//        height: 1250,
+//        geo: {
+//            projection: {
+//                type: 'robinson'
+//            },
+//            showland: true,
+//            subunitwidth: 1,
+//            countrywidth: 1,
+//            landcolor: 'rgb(229, 229, 229)',
+//        }
+//        };
+//
+//        Plotly.plot(myDiv, data, layout, {showLink: false});
+//                       });
 
             
 //            Plotly.d3.csv('http://localhost/Countries.csv', function(err, rows){
