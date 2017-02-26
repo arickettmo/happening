@@ -1,4 +1,6 @@
   <head>
+<!-- Fontawesome -->      
+<link rel="stylesheet" href="../../resources/font-awesome-4.7.0/css/font-awesome.min.css">
 <!-- Plotly.js -->
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <!-- jQuery -->
@@ -18,24 +20,67 @@
               </tr>
 	     </table>
 	</div>
-        <script>
-
+    <script>       
        
         $.getJSON('/cgi/trending_places.py', function(data){
             
-	    // sort by value
-		data.sort(function (a, b) {
-  			return b.score - a.score;
-		});
+            // sort by value
+            data.sort(function (a, b) {
+                return b.score - a.score;
+            });
 
-	    console.log(data);
-	    
-	  
+            var countries = []
+            var codes = []
+            var scores = []
+            
+            for (var i = 0; i < data.length; i++) {
+                // Show data in table 
+                  $( "#scores" ).append( "<tr><td>"+data[i].country+"</td><td>"+data[i].code+"</td><td>"+data[i].volume+"</td><td>"+data[i].mean+"</td><td>"+data[i].stdev+"</td><td>"+data[i].score+"</td></tr>");
+                // Restructure data in arrays for plotly map
+                countries.push(data[i].country);
+                codes.push(data[i].code);
+                scores.push(data[i].score);
+    
+            }
+            
+            
+            
+             var data = [{
+                    type: 'choropleth',
+                    locations: ['FRA', 'DEU', 'RUS', 'ESP'],
+                    z: [20, 30, 15, 10],
+                    marker: {
+                      line:{
+                        color: 'rgb(255,255,255)',
+                        width: 1
+                      }
+                    },
+                     showscale: false
+             }];
 
-	    for (var i = 0; i < data.length; i++) {
-    		$( "#scores" ).append( "<tr><td>"+data[i].country+"</td><td>"+data[i].code+"</td><td>"+data[i].volume+"</td><td>"+data[i].mean+"</td><td>"+data[i].stdev+"</td><td>"+data[i].score+"</td></tr>");
-   		//Do something
-	    }
+              var layout = {
+                      title: 'Trending countries',
+                      width: 1000,
+                      height: 1000,
+                  margin: {
+                    b: 80,
+                    l: 80,
+                    r: 80,
+                    t: 80,
+                    autoexpand: false
+                  },
+                      geo:{
+                        projection: {
+                           type: "kavrayskiy7"
+                        },
+                        showlakes: true,
+                        lakecolor: 'rgb(255,255,255)'
+                      }
+                  };
+      
+                Plotly.plot(myDiv, data, layout, {showLink: false});
+            
+           
 
         });    
             
