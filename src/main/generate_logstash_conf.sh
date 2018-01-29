@@ -3,7 +3,7 @@
 echo Creating logstash config file...
 
 
-echo -n "input { twitter { consumer_key => \"BYvnonTRKhTSMYEjZ1hqvbh4c\" consumer_secret =>\"n4XZz4wpcJWRYbLbhm1XlxvSxCzn4v8Rfg51omRblYX7qbab8I\" oauth_token => \"283137973-L97BLGeunsf8r8b5Xh8MDVeswFI0B93shjUJZ3OW\" oauth_token_secret => \"RL2iejRKSODZ7Ts6NwOLFpPjNj9vSqnNbrZZ8MTB4lt2G\" keywords => [" > /etc/logstash/conf.d/logstash_twitter.conf
+echo -n "input { twitter { consumer_key => \"$CONSUMER_KEY\" consumer_secret =>\"$CONSUMER_SECRET\" oauth_token => \"$OAUTH_TOKEN\" oauth_token_secret => \"$OAUTH_TOKEN_SECRET\" keywords => [" > /etc/logstash/conf.d/logstash_twitter.conf
 
 awk -F ";" '{print $1}' ../../resources/places.csv > ../../resources/file.csv
 
